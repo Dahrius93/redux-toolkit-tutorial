@@ -1,7 +1,9 @@
 import CartItem from "./CartItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../features/cart/cartSlice";
 
 const CartContainer = () => {
+  const dispatch = useDispatch();
   // usiamo useSelector per accedere allo slice cart
   // slice significa pezzo quindi accediamo a un container che noi abbiamo
   // chiamato cart dove dentro c'è lo stato del nostro carrello
@@ -37,7 +39,9 @@ const CartContainer = () => {
             total <span>${total}</span>
           </h4>
         </div>
-        <button className="btn clear-btn">clear cart</button>
+        <button className="btn clear-btn" onClick={() => dispatch(clearCart())}>
+          clear cart
+        </button>
       </footer>
     </section>
   );
